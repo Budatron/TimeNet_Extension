@@ -1,0 +1,14 @@
+{
+    "manifest_version": 3,
+    "name": "UniBeat",
+    "version": "1.0",
+    "description": "Revela la hora local y en beats, fusionando la tradición del tiempo con la modernidad digital de Swatch Beat",
+    "icons": {
+        "16": "icon128.png",
+        "48": "icon128.png",
+        "128": "icon128.png"
+    },
+    "action": {
+        "default_popup": "popup.html"
+    }
+}

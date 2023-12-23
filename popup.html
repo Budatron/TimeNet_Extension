@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniBeat</title>
+    <!-- Agregar la fuente digital -->
+    
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Wallpoet&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Viga&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="popup.css">
+    
+   
+</head> 
+<body>
+    <img src="logo.svg" alt="">
+    <!-- Elemento para mostrar la hora en beats -->
+    <div id="beatTime"></div>
+
+    <!-- Elemento para mostrar la hora local -->
+        <div id="localTime"></div>
+
+    
+        <!-- Entrada para la hora local -->
+<label for="inputHoraLocal">Hora Local:</label>
+<input type="text" id="inputHoraLocal" placeholder="Formato HH:mm:ss">
+
+<!-- Botones para convertir -->
+<button id="convertirALocal">Convertir a Local</button>
+<button id="convertirABeat">Convertir a Swatch Beat</button>
+
+<!-- Resultados -->
+<div id="resultadoConversion"></div>
+
+
+
+<script src="popup.js"></script>
+
+</body>
+</html>
