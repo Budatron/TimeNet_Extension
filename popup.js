@@ -25,7 +25,10 @@ document.getElementById("convertirABeat").addEventListener("click", convertirABe
 function convertirALocal() {
     let beat = document.getElementById('inputHoraLocal').value;
 
-    if (beat) {
+    let expresionNumber = /[0-9.]/;
+    let expresionDobleDot = /[:]/;
+
+    if (expresionNumber.test(beat) && !expresionDobleDot.test(beat)) {
         let segundosTotales = beat * 86.4;
 
         // Calcular horas, minutos y segundos
@@ -40,16 +43,21 @@ function convertirALocal() {
         horaLocal.setMinutes(minutos);
         horaLocal.setSeconds(segundos);
 
-        document.getElementById('resultadoConversion').innerHTML = 'Hora Local: ' + horaLocal.toLocaleTimeString();
+        document.getElementById('resultadoConversion').innerHTML =  horaLocal.toLocaleTimeString();
+    } else if (!beat) {
+        document.getElementById('resultadoConversion').innerHTML = '';
     } else {
-        document.getElementById('resultadoConversion').innerHTML = 'Por favor, ingresa una hora local.';
+        document.getElementById('resultadoConversion').innerHTML = 'invalid';
     }
 }
 
 function convertirABeat() {
     let entradaHoraLocal = document.getElementById('inputHoraLocal').value;
 
-    if (entradaHoraLocal) {
+    let expresionNumber = /[0-9]/;
+    let expresionDobleDot = /[:]/;
+
+    if (expresionNumber.test(entradaHoraLocal) && expresionDobleDot.test(entradaHoraLocal)) {
         let horaBiel = new Date();
         
         let partesHora = entradaHoraLocal.split(':');
@@ -63,8 +71,43 @@ function convertirABeat() {
         // Calcular el tiempo en beats con centésimas
         let beats = ((horaBiel.getUTCHours() * 3600 + horaBiel.getUTCMinutes() * 60 + horaBiel.getUTCSeconds() + horaBiel.getUTCMilliseconds() / 1000) / 86.4).toFixed(2);
 
-        document.getElementById('resultadoConversion').innerHTML = 'Swatch Beat: ' + beats;
+        document.getElementById('resultadoConversion').innerHTML =  "@" + beats;
+    } else if (!entradaHoraLocal) {
+        document.getElementById('resultadoConversion').innerHTML = '';
     } else {
-        document.getElementById('resultadoConversion').innerHTML = 'Por favor, ingresa una hora local.';
+        document.getElementById('resultadoConversion').innerHTML = 'invalid';
     }
 }
+
+document.getElementById("label-container").addEventListener("click", openPanel);
+
+const panel = document.getElementById("panel");
+const label = document.querySelector("label");
+const span = document.querySelector("span");
+
+function openPanel() {
+    label.classList.toggle("open");
+    panel.classList.toggle("open");
+    span.classList.toggle("open");
+}
+
+async function fetchData() {
+        const url = 'https://concerts-artists-events-tracker.p.rapidapi.com/location?name=CDMX&minDate=2023-10-01&maxDate=2024-11-01&page=1';
+    const options = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': '03ed9ab9admsh860665e38d41091p1d6d81jsn055440558dda',
+            'X-RapidAPI-Host': 'concerts-artists-events-tracker.p.rapidapi.com'
+        }
+    };
+
+    try {
+        const response = await fetch(url, options);
+        const result = await response.text();
+        console.log(result);
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+fetchData();

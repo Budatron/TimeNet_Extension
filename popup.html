@@ -12,7 +12,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Wallpoet&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Viga&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Text+Me+One&display=swap" rel="stylesheet">
     
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@40,400,0,0" />
+
     <link rel="stylesheet" href="popup.css">
     
    
@@ -27,19 +30,25 @@
 
     
         <!-- Entrada para la hora local -->
-<label for="inputHoraLocal">Hora Local:</label>
-<input type="text" id="inputHoraLocal" placeholder="Formato HH:mm:ss">
+        <div id="label-container">
+            <label for="inputHoraLocal">convert</label>
+            <span class="material-symbols-outlined">
+            expand_more
+            </span>
+        </div>
+        <div id="panel" class="panel">
+            <input type="text" id="inputHoraLocal" placeholder=" HH:mm:ss or 999.99">
+            <!-- Botones para convertir -->
+            <button id="convertirALocal">To Local</button>
+            <button id="convertirABeat">To Beat</button>
 
-<!-- Botones para convertir -->
-<button id="convertirALocal">Convertir a Local</button>
-<button id="convertirABeat">Convertir a Swatch Beat</button>
 
-<!-- Resultados -->
-<div id="resultadoConversion"></div>
+        </div>
+        
+        <!-- Resultados -->
+        <div id="resultadoConversion"></div>
 
-
-
-<script src="popup.js"></script>
+        <script src="popup.js"></script>
 
 </body>
 </html>
